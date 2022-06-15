@@ -5,4 +5,7 @@
         \nDid you know that the number 7 is considered the luckiest number?\n
         After all, there are 7 days of the week, 7 continents, 7 colors of the rainbow, 7 musical notes and much more.
         \nIn addition, the number 7 is most often the favorite number of people around the world."</string>
+
+    <string name="leveltwo">Select the number of objects with more.\n\nQuestions may be repeated,until you collect 10 points.</string>
+    <string name="leveltwoEnd">"Congratulations, you've completed the level!\n\nKeep up the good work on level 3."</string>
 </resources>

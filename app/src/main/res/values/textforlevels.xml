@@ -10,4 +10,15 @@
     <string name="lvl1text7">Seven</string>
     <string name="lvl1text8">Eight</string>
     <string name="lvl1text9">Nine</string>
+
+    <string name="lvl2text1">One</string>
+    <string name="lvl2text2">Two</string>
+    <string name="lvl2text3">Three</string>
+    <string name="lvl2text4">Four</string>
+    <string name="lvl2text5">Five</string>
+    <string name="lvl2text6">Six</string>
+    <string name="lvl2text7">Seven</string>
+    <string name="lvl2text8">Eight</string>
+    <string name="lvl2text9">Nine</string>
+    <string name="lvl2text10">Ten</string>
 </resources>

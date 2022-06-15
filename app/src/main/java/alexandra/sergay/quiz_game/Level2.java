@@ -1,7 +1,5 @@
 package alexandra.sergay.quiz_game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,9 +15,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Random;
 
-public class Level1 extends AppCompatActivity {
+public class Level2 extends AppCompatActivity {
 
     Dialog dialog;
     Dialog dialogEnd;
@@ -58,12 +58,18 @@ public class Level1 extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
 
+        ImageView previewimg = (ImageView)dialog.findViewById(R.id.previewimg);
+        previewimg.setImageResource(R.drawable.previewimgtwo);
+
+        TextView textdescription = (TextView)dialog.findViewById(R.id.textdescription);
+        textdescription.setText(R.string.leveltwo);
+
         TextView btnclose = (TextView) dialog.findViewById(R.id.btnclose);
         btnclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -81,19 +87,20 @@ public class Level1 extends AppCompatActivity {
         });
         dialog.show();
 
-        //___________________________________________________
         dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.dialogend);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogEnd.setCancelable(false);
 
+        // here was error textdescriptionEnd
+
         TextView btnclose2 = (TextView) dialogEnd.findViewById(R.id.btnclose);
         btnclose2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -108,7 +115,7 @@ public class Level1 extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    Intent intent = new Intent(Level1.this, Level2.class);
+                    Intent intent = new Intent(Level2.this, Level2.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -118,15 +125,13 @@ public class Level1 extends AppCompatActivity {
             }
         });
 
-        //___________________________________________________
-
         Button btn_back = (Button) findViewById((R.id.button_back1));
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -139,11 +144,11 @@ public class Level1 extends AppCompatActivity {
                 R.id.point7,R.id.point8,R.id.point9,R.id.point10,
         };
 
-        final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
+        final Animation a = AnimationUtils.loadAnimation(Level2.this, R.anim.alpha);
 
         numLeft = random.nextInt(10);
-        img_left.setImageResource(array.images1[numLeft]);
-        text_left.setText(array.texts1[numLeft]);
+        img_left.setImageResource(array.images2[numLeft]);
+        text_left.setText(array.texts2[numLeft]);
 
         numRight = random.nextInt(10);
 
@@ -151,8 +156,8 @@ public class Level1 extends AppCompatActivity {
             numRight = random.nextInt(10);
         }
 
-        img_right.setImageResource(array.images1[numRight]);
-        text_right.setText(array.texts1[numRight]);
+        img_right.setImageResource(array.images2[numRight]);
+        text_right.setText(array.texts2[numRight]);
 
         img_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -203,13 +208,13 @@ public class Level1 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
-                        dialogEnd.show();
+
                     }
                     else{
                         numLeft = random.nextInt(10);
-                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.setImageResource(array.images2[numLeft]);
                         img_left.startAnimation(a);
-                        text_left.setText(array.texts1[numLeft]);
+                        text_left.setText(array.texts2[numLeft]);
 
                         numRight = random.nextInt(10);
 
@@ -217,9 +222,9 @@ public class Level1 extends AppCompatActivity {
                             numRight = random.nextInt(10);
                         }
 
-                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.setImageResource(array.images2[numRight]);
                         img_right.startAnimation(a);
-                        text_right.setText(array.texts1[numRight]);
+                        text_right.setText(array.texts2[numRight]);
 
                         img_right.setEnabled(true);
                     }
@@ -279,13 +284,13 @@ public class Level1 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
-                        dialogEnd.show();
+
                     }
                     else{
                         numLeft = random.nextInt(10);
-                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.setImageResource(array.images2[numLeft]);
                         img_left.startAnimation(a);
-                        text_left.setText(array.texts1[numLeft]);
+                        text_left.setText(array.texts2[numLeft]);
 
                         numRight = random.nextInt(10);
 
@@ -293,9 +298,9 @@ public class Level1 extends AppCompatActivity {
                             numRight = random.nextInt(10);
                         }
 
-                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.setImageResource(array.images2[numRight]);
                         img_right.startAnimation(a);
-                        text_right.setText(array.texts1[numRight]);
+                        text_right.setText(array.texts2[numRight]);
 
                         img_left.setEnabled(true);
                     }
@@ -311,7 +316,7 @@ public class Level1 extends AppCompatActivity {
     public void onBackPressed()
     {
         try {
-            Intent intent = new Intent(Level1.this,GameLevels.class);
+            Intent intent = new Intent(Level2.this,GameLevels.class);
             startActivity(intent);
             finish();
         }
