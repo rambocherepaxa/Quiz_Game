@@ -91,9 +91,14 @@ public class Level2 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.dialogend);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
 
-        // here was error textdescriptionEnd
+        // here was error textdescriptionEnd !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        TextView textdescriptionEnd = (TextView)dialogEnd.findViewById(R.id.textdescription);
+        textdescriptionEnd.setText(R.string.leveltwoEnd);
+
 
         TextView btnclose2 = (TextView) dialogEnd.findViewById(R.id.btnclose);
         btnclose2.setOnClickListener(new View.OnClickListener() {
@@ -208,7 +213,7 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
-
+                        dialogEnd.show();
                     }
                     else{
                         numLeft = random.nextInt(10);
@@ -284,7 +289,7 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
-
+                        dialogEnd.show();
                     }
                     else{
                         numLeft = random.nextInt(10);

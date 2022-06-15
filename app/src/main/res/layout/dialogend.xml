@@ -56,10 +56,10 @@
     <Button
         android:id="@+id/btncontinue"
         android:layout_width="172dp"
-        android:layout_height="4dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="10"
+
         android:background="@drawable/button_stroke_black95_press_white"
         android:drawablePadding="20dp"
         android:text="@string/textcontinue"
