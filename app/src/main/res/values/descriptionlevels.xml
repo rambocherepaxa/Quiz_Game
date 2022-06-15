@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="levelone">In this task, you need to choose a bigger number.\n\nQuestions may be repeated,until you collect 10 points.</string>
+    <string name="leveloneEnd">"Congratulations, you've completed the level!
+        \nDid you know that the number 7 is considered the luckiest number?\n
+        After all, there are 7 days of the week, 7 continents, 7 colors of the rainbow, 7 musical notes and much more.
+        \nIn addition, the number 7 is most often the favorite number of people around the world."</string>
 </resources>
