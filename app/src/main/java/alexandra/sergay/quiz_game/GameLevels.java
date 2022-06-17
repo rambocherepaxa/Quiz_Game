@@ -48,6 +48,21 @@ public class GameLevels extends AppCompatActivity {
             }
         });
 
+        TextView textView3 = (TextView)findViewById(R.id.textView3);
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(GameLevels.this, Level3.class);
+                    startActivity(intent);finish();
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        });
+
+
         TextView textView1 = (TextView)findViewById(R.id.textView1);
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override

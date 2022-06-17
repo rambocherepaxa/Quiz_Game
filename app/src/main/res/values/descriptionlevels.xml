@@ -8,4 +8,5 @@
 
     <string name="leveltwo">Select the number of objects with more.\n\nQuestions may be repeated,until you collect 10 points.</string>
     <string name="leveltwoEnd">"Congratulations, you've completed the level!\n\nKeep up the good work on level 3."</string>
+    <string name="levelthree">"Choose the picture in which the animal shows its tongue more?\nThe questions can be repeated until you score 10 points."</string>
 </resources>
