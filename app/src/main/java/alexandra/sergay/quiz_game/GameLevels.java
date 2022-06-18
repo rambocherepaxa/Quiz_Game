@@ -1,6 +1,7 @@
 package alexandra.sergay.quiz_game;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,8 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameLevels extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.button_pressed);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamelevels);
 
@@ -24,6 +30,9 @@ public class GameLevels extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mediaPlayer.start();
+
                try {
                    Intent intent = new Intent(GameLevels.this, MainActivity.class);
                    startActivity(intent);finish();
@@ -39,6 +48,9 @@ public class GameLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    mediaPlayer.start();
+
                     Intent intent = new Intent(GameLevels.this, Level2.class);
                     startActivity(intent);finish();
                 }
@@ -53,6 +65,9 @@ public class GameLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    mediaPlayer.start();
+
                     Intent intent = new Intent(GameLevels.this, Level3.class);
                     startActivity(intent);finish();
                 }
@@ -68,6 +83,9 @@ public class GameLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    mediaPlayer.start();
+
                     Intent intent = new Intent(GameLevels.this, Level1.class);
                     startActivity(intent);finish();
                 }
@@ -81,6 +99,10 @@ public class GameLevels extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         try {
+
+            mediaPlayer = MediaPlayer.create(this,R.raw.button_pressed);
+            mediaPlayer.start();
+
             Intent intent = new Intent(GameLevels.this, MainActivity.class);
             startActivity(intent);finish();
         }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,11 @@ import java.util.Random;
 
 public class Level2 extends AppCompatActivity {
 
+    MediaPlayer default_sound;
+    MediaPlayer error_sound;
+    MediaPlayer right_sound;
+    MediaPlayer victory_sound;
+
     Dialog dialog;
     Dialog dialogEnd;
 
@@ -33,6 +39,12 @@ public class Level2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        default_sound = MediaPlayer.create(this,R.raw.button_pressed);
+        error_sound = MediaPlayer.create(this,R.raw.incorrect_answer);
+        right_sound = MediaPlayer.create(this,R.raw.right_answer);
+        victory_sound = MediaPlayer.create(this,R.raw.level_finish);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
 
@@ -69,6 +81,9 @@ public class Level2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    default_sound.start();
+
                     Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
@@ -82,6 +97,7 @@ public class Level2 extends AppCompatActivity {
         btncontinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                default_sound.start();
                 dialog.dismiss();
             }
         });
@@ -105,6 +121,9 @@ public class Level2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+                    default_sound.start();
+
                     Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
@@ -118,8 +137,10 @@ public class Level2 extends AppCompatActivity {
         btncontinue2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
+
+                    default_sound.start();
+
                     Intent intent = new Intent(Level2.this, Level3.class);
                     startActivity(intent);
                     finish();
@@ -136,6 +157,9 @@ public class Level2 extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
+
+                    default_sound.start();
+
                     Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
@@ -172,9 +196,11 @@ public class Level2 extends AppCompatActivity {
 
                     img_right.setEnabled(false);
                     if (numLeft > numRight){
+                        right_sound.start();
                         img_left.setImageResource(R.drawable.img_true);
                     }
                     else{
+                        error_sound.start();
                         img_left.setImageResource(R.drawable.image_false);
                     }
                 }
@@ -213,6 +239,8 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
+
+                        victory_sound.start();
                         dialogEnd.show();
                     }
                     else{
@@ -248,9 +276,11 @@ public class Level2 extends AppCompatActivity {
 
                     img_left.setEnabled(false);
                     if (numLeft < numRight){
+                        right_sound.start();
                         img_right.setImageResource(R.drawable.img_true);
                     }
                     else{
+                        error_sound.start();
                         img_right.setImageResource(R.drawable.image_false);
                     }
                 }
@@ -289,6 +319,8 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if(count == 10){
+
+                        victory_sound.start();
                         dialogEnd.show();
                     }
                     else{
@@ -321,6 +353,8 @@ public class Level2 extends AppCompatActivity {
     public void onBackPressed()
     {
         try {
+            default_sound.start();
+
             Intent intent = new Intent(Level2.this,GameLevels.class);
             startActivity(intent);
             finish();
