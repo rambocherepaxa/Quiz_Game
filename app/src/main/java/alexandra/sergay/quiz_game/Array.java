@@ -2,6 +2,7 @@ package alexandra.sergay.quiz_game;
 
 public class Array {
 
+    // This array contains links for pictures of first level
     final int[] images1 = {
             R.drawable.onelevel_zero,
             R.drawable.onelevel_one,
@@ -15,6 +16,7 @@ public class Array {
             R.drawable.onelevel_nine,
     };
 
+    // This array contains names for every picture that will appear under them
     final int[] texts1 = {
             R.string.lvl1text0,
             R.string.lvl1text1,
@@ -29,7 +31,7 @@ public class Array {
     };
 
 
-    // lvl 2
+    // This array contains links for pictures of second level
     final int[] images2 = {
             R.drawable.twolevel_one,
             R.drawable.twolevel_two,
@@ -43,6 +45,7 @@ public class Array {
             R.drawable.twolevel_ten,
     };
 
+    // This array contains names for every picture that will appear under them
     final int[] texts2 = {
             R.string.lvl2text1,
             R.string.lvl2text2,
@@ -56,7 +59,7 @@ public class Array {
             R.string.lvl2text10,
     };
 
-
+    // This array contains links for pictures of third level
     final int[] images3 = {
             R.drawable.three_level1,
             R.drawable.three_level2,
@@ -70,6 +73,7 @@ public class Array {
             R.drawable.three_level10,
     };
 
+    // This array contains names for every picture that will appear under them
     final int[] texts3 = {
             R.string.lvl3text1,
             R.string.lvl3text2,

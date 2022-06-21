@@ -21,25 +21,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class Level2 extends AppCompatActivity {
-
+    // Those values will contain sounds of game accompaniment
     MediaPlayer default_sound;
     MediaPlayer error_sound;
     MediaPlayer right_sound;
     MediaPlayer victory_sound;
 
-    Dialog dialog;
-    Dialog dialogEnd;
+    Dialog dialog; // This value will contain page of tutorial dialog before start
+    Dialog dialogEnd; // This value will contain page of victory and reference to next level
 
+    //Those values will contain a number value that will be shown on the pictures
     public int numLeft;
     public int numRight;
-    Array array = new Array();
-    Random random = new Random();
-    public int count = 0;
+
+    Array array = new Array(); // This array will contain list of pictures
+    Random random = new Random(); // This value will mark which picture to show from array
+    public int count = 0; // This counter will save the number of right answered questions
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //Assigning sounds to each variable separately for its sound
         default_sound = MediaPlayer.create(this,R.raw.button_pressed);
         error_sound = MediaPlayer.create(this,R.raw.incorrect_answer);
         right_sound = MediaPlayer.create(this,R.raw.right_answer);
@@ -48,9 +51,11 @@ public class Level2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
 
+        // setting level text marker
         TextView text_levels = findViewById(R.id.text_levels);
-        text_levels.setText(R.string.level1);
+        text_levels.setText(R.string.level2);
 
+        // uploading left and right images
         final ImageView img_left = (ImageView) findViewById(R.id.img_left);
         img_left.setClipToOutline(true);
 
@@ -61,6 +66,7 @@ public class Level2 extends AppCompatActivity {
 
         final TextView text_right = findViewById(R.id.text_right);
 
+        // opening game page on full cellphone screen
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 

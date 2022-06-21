@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer; // this value responsible for sounds
+                                     // of button click in game
 
-    private long backPressedTime;
-    private Toast backToast;
+    private long backPressedTime; // This value will contain
+                                    // time between two taps on exit button
+
+    private Toast backToast;  // This value will show text on the screen after back tap
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this,R.raw.button_pressed);
         mediaPlayer.start();
+
+//Here we check if the user really wanted to
+// exit the game, or if he accidentally clicked on the button
 
         if (backPressedTime + 2000 > System.currentTimeMillis())
         {
