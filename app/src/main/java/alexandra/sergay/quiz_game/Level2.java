@@ -70,6 +70,7 @@ public class Level2 extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+        // creating tutorial dialog window
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.previewdialog);
@@ -109,6 +110,7 @@ public class Level2 extends AppCompatActivity {
         });
         dialog.show();
 
+        // creating tutorial dialog window
         dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.dialogend);
@@ -139,6 +141,7 @@ public class Level2 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
+        // Starting game
         Button btncontinue2 = (Button) dialogEnd.findViewById(R.id.btncontinue);
         btncontinue2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +149,7 @@ public class Level2 extends AppCompatActivity {
                 try {
 
                     default_sound.start();
-
+                    // Redirects the user to the next level of the game
                     Intent intent = new Intent(Level2.this, Level3.class);
                     startActivity(intent);
                     finish();
@@ -165,7 +168,7 @@ public class Level2 extends AppCompatActivity {
                 try {
 
                     default_sound.start();
-
+                    // return's user to the game levels page
                     Intent intent = new Intent(Level2.this, GameLevels.class);
                     startActivity(intent);
                     finish();
@@ -174,10 +177,18 @@ public class Level2 extends AppCompatActivity {
             }
         });
 
+        // This array contains "buttons" lined up in a row that will display the progress
+        // of the player's correct answers. With each correct answer,
+        // they will turn green, for an error they become transparent.
+
         final int[] progress = {
                 R.id.point1,R.id.point2,R.id.point3,R.id.point4,R.id.point5,R.id.point6,
                 R.id.point7,R.id.point8,R.id.point9,R.id.point10,
         };
+
+        //In the code below, for each picture on the right and on the left,
+        // a random picture is loaded from the drawble folder according to
+        // the level and a numerical value is assigned to it.
 
         final Animation a = AnimationUtils.loadAnimation(Level2.this, R.anim.alpha);
 
@@ -193,6 +204,28 @@ public class Level2 extends AppCompatActivity {
 
         img_right.setImageResource(array.images2[numRight]);
         text_right.setText(array.texts2[numRight]);
+
+        /*
+
+        The code below in the two orange boxes is identical.
+        These are two complete processing of the script for clicking on the right
+        and left images. Script processing includes:
+
+1) Checking if the picture is clicked (in this case, the second picture is blocked
+so that the user cannot select two answers.
+
+2) Checking if the numerical value of this picture is greater
+than the numerical value of another picture.
+(If yes, then points are added, if not, points are reduced).
+
+3) Checking the number of points at the moment (for example, if in this level
+ you need to score 10 points and the user received 10 points after the answer,
+ the game will be stopped and the user will enter the victory window).
+
+4) If the points are still less than 10, new random pictures from the
+folder of the corresponding level will be loaded onto the page
+
+*/
 
         img_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -355,6 +388,7 @@ public class Level2 extends AppCompatActivity {
         //Finished right card action
     }
 
+    // return's user to the game levels page
     @Override
     public void onBackPressed()
     {
