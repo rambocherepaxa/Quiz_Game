@@ -30,11 +30,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/start"
-            android:background="@drawable/button_stroke_black95_press_white"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColor="@color/black95"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+
+            android:background="@drawable/button_stroke_black95_press_white"
+            />
 
     </LinearLayout>
 </RelativeLayout>
+
+<!--    android:background="@drawable/button_stroke_black95_press_white"-->

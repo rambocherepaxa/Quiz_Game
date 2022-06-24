@@ -1,7 +1,5 @@
 package alexandra.sergay.quiz_game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,14 +14,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class Level1 extends AppCompatActivity {
-
-// Those values will contain sounds of game accompaniment
-    MediaPlayer mediaPlayer;
+public class Level3 extends AppCompatActivity {
+    // Those values will contain sounds of game accompaniment
+    MediaPlayer default_sound;
     MediaPlayer error_sound;
     MediaPlayer right_sound;
     MediaPlayer victory_sound;
@@ -31,7 +31,7 @@ public class Level1 extends AppCompatActivity {
     Dialog dialog; // This value will contain page of tutorial dialog before start
     Dialog dialogEnd; // This value will contain page of victory and reference to next level
 
-//Those values will contain a number value that will be shown on the pictures
+    //Those values will contain a number value that will be shown on the pictures
     public int numLeft;
     public int numRight;
 
@@ -44,7 +44,7 @@ public class Level1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //Assigning sounds to each variable separately for its sound
-        mediaPlayer = MediaPlayer.create(this,R.raw.button_pressed);
+        default_sound = MediaPlayer.create(this,R.raw.button_pressed);
         error_sound = MediaPlayer.create(this,R.raw.incorrect_answer);
         right_sound = MediaPlayer.create(this,R.raw.right_answer);
         victory_sound = MediaPlayer.create(this,R.raw.level_finish);
@@ -54,9 +54,9 @@ public class Level1 extends AppCompatActivity {
 
         // setting level text marker
         TextView text_levels = findViewById(R.id.text_levels);
-        text_levels.setText(R.string.level1);
+        text_levels.setText(R.string.level3);
 
-        // uploading right and left images
+        // uploading left and right images
         final ImageView img_left = (ImageView) findViewById(R.id.img_left);
         img_left.setClipToOutline(true);
 
@@ -65,12 +65,15 @@ public class Level1 extends AppCompatActivity {
 
         // uploading text under right and left picture
         final TextView text_left = findViewById(R.id.text_left);
-
         final TextView text_right = findViewById(R.id.text_right);
 
         // opening game page on full cellphone screen
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        // uploading background for level
+        ImageView background = (ImageView)findViewById(R.id.background);
+        background.setImageResource(R.drawable.level3);
 
         // creating tutorial dialog window
         dialog = new Dialog(this);
@@ -79,15 +82,24 @@ public class Level1 extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
 
+        ImageView previewimg = (ImageView)dialog.findViewById(R.id.previewimg);
+        previewimg.setImageResource(R.drawable.previewimg3);
+
+        LinearLayout dialogfon = (LinearLayout)dialog.findViewById(R.id.dialogfon);
+        dialogfon.setBackgroundResource(R.drawable.previewbackground3);
+
+        TextView textdescription = (TextView)dialog.findViewById(R.id.textdescription);
+        textdescription.setText(R.string.levelthree);
+
         TextView btnclose = (TextView) dialog.findViewById(R.id.btnclose);
         btnclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
 
-                    mediaPlayer.start();
-                    // return's user to the game levels page
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    default_sound.start();
+
+                    Intent intent = new Intent(Level3.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -96,35 +108,37 @@ public class Level1 extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        // Starting game
         Button btncontinue = (Button) dialog.findViewById(R.id.btncontinue);
         btncontinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.start();
+                default_sound.start();
                 dialog.dismiss();
             }
         });
         dialog.show();
 
-        //___________________________________________________
-
-        // creating victory dialog
         dialogEnd = new Dialog(this);
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEnd.setContentView(R.layout.dialogend);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false);
+
+        // here was error textdescriptionEnd
+        TextView textdescriptionEnd = (TextView)dialogEnd.findViewById(R.id.textdescription);
+        textdescriptionEnd.setText(R.string.leveltwoEnd);
+
 
         TextView btnclose2 = (TextView) dialogEnd.findViewById(R.id.btnclose);
         btnclose2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-
-                    mediaPlayer.start();
+                    default_sound.start();
                     // return's user to game levels page
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    Intent intent = new Intent(Level3.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -133,16 +147,16 @@ public class Level1 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
+        // Starting game
         Button btncontinue2 = (Button) dialogEnd.findViewById(R.id.btncontinue);
         btncontinue2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
-
-                    mediaPlayer.start();
+                    default_sound.start();
                     // Redirects the user to the next level of the game
-                    Intent intent = new Intent(Level1.this, Level2.class);
+                    Intent intent = new Intent(Level3.this, Level3.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -152,18 +166,15 @@ public class Level1 extends AppCompatActivity {
             }
         });
 
-        //___________________________________________________
-
         Button btn_back = (Button) findViewById((R.id.button_back1));
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
-
-                    mediaPlayer.start();
+                    default_sound.start();
                     // return's user to the game levels page
-                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    Intent intent = new Intent(Level3.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {
@@ -184,11 +195,11 @@ public class Level1 extends AppCompatActivity {
         // a random picture is loaded from the drawble folder according to
         // the level and a numerical value is assigned to it.
 
-        final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
+        final Animation a = AnimationUtils.loadAnimation(Level3.this, R.anim.alpha);
 
         numLeft = random.nextInt(10);
-        img_left.setImageResource(array.images1[numLeft]);
-        text_left.setText(array.texts1[numLeft]);
+        img_left.setImageResource(array.images3[numLeft]);
+        text_left.setText(array.texts3[numLeft]);
 
         numRight = random.nextInt(10);
 
@@ -196,9 +207,8 @@ public class Level1 extends AppCompatActivity {
             numRight = random.nextInt(10);
         }
 
-        img_right.setImageResource(array.images1[numRight]);
-        text_right.setText(array.texts1[numRight]);
-
+        img_right.setImageResource(array.images3[numRight]);
+        text_right.setText(array.texts3[numRight]);
 
         /*
 
@@ -221,6 +231,7 @@ than the numerical value of another picture.
 folder of the corresponding level will be loaded onto the page
 
 */
+
         img_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -229,10 +240,12 @@ folder of the corresponding level will be loaded onto the page
 
                     img_right.setEnabled(false);
                     if (numLeft > numRight){
+
                         right_sound.start();
                         img_left.setImageResource(R.drawable.img_true);
                     }
                     else{
+
                         error_sound.start();
                         img_left.setImageResource(R.drawable.image_false);
                     }
@@ -278,9 +291,9 @@ folder of the corresponding level will be loaded onto the page
                     }
                     else{
                         numLeft = random.nextInt(10);
-                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.setImageResource(array.images3[numLeft]);
                         img_left.startAnimation(a);
-                        text_left.setText(array.texts1[numLeft]);
+                        text_left.setText(array.texts3[numLeft]);
 
                         numRight = random.nextInt(10);
 
@@ -288,9 +301,9 @@ folder of the corresponding level will be loaded onto the page
                             numRight = random.nextInt(10);
                         }
 
-                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.setImageResource(array.images3[numRight]);
                         img_right.startAnimation(a);
-                        text_right.setText(array.texts1[numRight]);
+                        text_right.setText(array.texts3[numRight]);
 
                         img_right.setEnabled(true);
                     }
@@ -309,10 +322,12 @@ folder of the corresponding level will be loaded onto the page
 
                     img_left.setEnabled(false);
                     if (numLeft < numRight){
+
                         right_sound.start();
                         img_right.setImageResource(R.drawable.img_true);
                     }
                     else{
+
                         error_sound.start();
                         img_right.setImageResource(R.drawable.image_false);
                     }
@@ -358,9 +373,9 @@ folder of the corresponding level will be loaded onto the page
                     }
                     else{
                         numLeft = random.nextInt(10);
-                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.setImageResource(array.images3[numLeft]);
                         img_left.startAnimation(a);
-                        text_left.setText(array.texts1[numLeft]);
+                        text_left.setText(array.texts3[numLeft]);
 
                         numRight = random.nextInt(10);
 
@@ -368,9 +383,9 @@ folder of the corresponding level will be loaded onto the page
                             numRight = random.nextInt(10);
                         }
 
-                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.setImageResource(array.images3[numRight]);
                         img_right.startAnimation(a);
-                        text_right.setText(array.texts1[numRight]);
+                        text_right.setText(array.texts3[numRight]);
 
                         img_left.setEnabled(true);
                     }
@@ -387,8 +402,9 @@ folder of the corresponding level will be loaded onto the page
     public void onBackPressed()
     {
         try {
-            mediaPlayer.start();
-            Intent intent = new Intent(Level1.this,GameLevels.class);
+
+            default_sound.start();
+            Intent intent = new Intent(Level3.this,GameLevels.class);
             startActivity(intent);
             finish();
         }

@@ -21,4 +21,16 @@
     <string name="lvl2text8">Eight</string>
     <string name="lvl2text9">Nine</string>
     <string name="lvl2text10">Ten</string>
+
+    <string name = "lvl3text1">Pig</string>
+    <string name = "lvl3text2">Puppy</string>
+    <string name = "lvl3text3">Sheep</string>
+    <string name = "lvl3text4">Squirrel</string>
+    <string name = "lvl3text5">Dog</string>
+    <string name = "lvl3text6">Cat</string>
+    <string name = "lvl3text7">Lion</string>
+    <string name = "lvl3text8">Lemur</string>
+    <string name = "lvl3text9">Crocodile</string>
+    <string name = "lvl3text10">Dinosaur</string>
+
 </resources>
